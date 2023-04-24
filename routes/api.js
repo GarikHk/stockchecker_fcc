@@ -1,8 +1,9 @@
 'use strict';
-const fetch = require('node-fetch');
-const Stocks = require('../schemas/stock.js');
-const bcrypt = require('bcrypt');
+const fetch   = require('node-fetch');
+const Stocks  = require('../schemas/stock.js');
+const bcrypt  = require('bcrypt');
 
+// Function for getting the price of the stock
 const getPrice = async (symbol, ip, liked) => {
   let url = `https://stock-price-checker-proxy.freecodecamp.rocks/v1/stock/${symbol}/quote`;
   let price, likes;
@@ -47,7 +48,7 @@ const getPrice = async (symbol, ip, liked) => {
 
   // Return details about the stock
   return {
-    symbol: symbol,
+    stock: symbol,
     price: price,
     likes: likes,
   };
@@ -57,33 +58,36 @@ module.exports = function (app) {
 
   app.route('/api/stock-prices')
     .get(async (req, res) => {
-      const stock = req.query.stock;
+      const stock = req.query.stock
       const like = req.query.like;
       const ip = req.socket.remoteAddress;
       let data = [];
 
+      //  If there is more than one stock
       if (Array.isArray(stock)) {
-        let temp;
+        let temp = [];
         for (let i = 0; i < 2; i++) {
-          const query = await getPrice(stock[i], ip, like);
+          const query = await getPrice(stock[i].toUpperCase(), ip, like);
 
           temp.push(query.likes);
           data.push({
-            symbol: query.symbol,
+            stock: query.stock,
             price: query.price,
           });
         };
 
-        data[1].rel_likes = temp[1] - temp[2];
-        data[2].rel_likes = temp[2] - temp[1];
+        // Get the difference of the likes
+        data[0].rel_likes = temp[0] - temp[1];
+        data[1].rel_likes = temp[1] - temp[0];
 
         return res.status(200).json({
           stockData: data,
         });
       };
 
+      // If there is only one stock
       return res.status(200).json({
-        stockData: await getPrice(stock, ip, like),
+        stockData: await getPrice(stock.toUpperCase(), ip, like),
       });
     });
 
