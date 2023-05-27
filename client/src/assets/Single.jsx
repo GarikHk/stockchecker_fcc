@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Single({ handleSubmit, handleChange, formData, setFormData}) {
+export default function Single({ handleSubmit, handleChange, formData, setFormData }) {
     return (
         <form className="formClass" onSubmit={handleSubmit}>
             <input
@@ -11,15 +11,14 @@ export default function Single({ handleSubmit, handleChange, formData, setFormDa
                 onChange={handleChange}
                 value={formData.stock1}
             />
-            <div>
+            <div className="buttons">
                 <div
-                    className={!formData.like ? "like" : "liked"}
+                    className="like"
                     onClick={() => setFormData(prev => ({
                         ...prev,
                         like: !prev.like
                     }))}
-                >{!formData.like ? "Like" : "Liked"}</div>
-
+                ><p>{!formData.like ? "Like" : "Liked"}</p></div>
                 <button>Get Price!</button>
             </div>
 

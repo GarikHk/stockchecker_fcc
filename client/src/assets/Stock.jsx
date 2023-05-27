@@ -26,10 +26,8 @@ export default function Stock({ title, component: Component, ...props }) {
         console.log(formData)
     }
 
-    // console.log(Component)
-
     return (
-        <div className={`stock`}>
+        <div className="stock">
             <div
                 className="title"
                 onClick={() => setDisplay(prev => !prev)}

@@ -19,14 +19,14 @@ export default function Double({ handleSubmit, handleChange, formData, setFormDa
                 onChange={handleChange}
                 value={formData.stock2}
             />
-            <div>
+            <div className="buttons">
                 <div
-                    className={!formData.like ? "like" : "liked"}
+                    className="like"
                     onClick={() => setFormData(prev => ({
                         ...prev,
                         like: !prev.like
                     }))}
-                >{!formData.like ? "Like" : "Liked"}</div>
+                ><p>{!formData.like ? "Like" : "Liked"}</p></div>
 
                 <button>Get Price!</button>
             </div>
