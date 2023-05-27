@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    background-color: #FFFAD1;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+    display: block;
+}
+
+.wrapper {
+    max-width: min(70ch, 100% - 4rem);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms;
+}
+
+.content.expand {
+    grid-template-rows: 1fr;
+}
+
+.content>form {
+    overflow: hidden;
+}
