@@ -4,7 +4,8 @@ body {
     font-family: system-ui;
     font-size: 1.125rem;
     line-height: 1.5;
-    background-color: #FFFAD1;
+    background-color: #3e3e42;
+    color: #36ba01;
 }
 
 img,
@@ -32,4 +33,49 @@ video {
 
 .content>form {
     overflow: hidden;
+}
+
+main {
+    background: #121212;
+    padding: 1rem;
+}
+
+.stock {
+    padding: 1rem;
+    border: 1px solid;
+}
+
+.title {
+    padding: 1rem;
+}
+
+.formClass {
+    display: flex;
+    flex-direction: column;
+}
+
+.formClass input {
+    text-align: center;
+    /* font-size: 1.5rem; */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px rgba(1, 1, 1, 0.1);
+    margin: 1rem;
+    padding: 1rem;
+    outline: none;
+    color: aliceblue;
+    background: #3e3e42;
+}
+
+/* CHECKBOX */
+.like {
+    background-color: blue;
+    color: white;
+    border: 3px solid white;
+}
+
+.liked {
+    background-color: white;
+    color: blue;
+    border: 3px solid blue;
 }
