@@ -70,7 +70,7 @@ export default function Stock({ title, component: Component, ...props }) {
                     {json ? "Hide JSON" : "See JSON"}
                 </button>
 
-                <div className={!json ? "jsonResult" : "jsonResult expand"}>
+                <div className={`jsonResult ${!json ? "" : "expand"}`}>
                     <pre>{JSON.stringify(stockData, null, 2)}</pre>
                 </div>
             </div>
