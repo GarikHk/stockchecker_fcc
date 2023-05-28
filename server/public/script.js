@@ -2,7 +2,7 @@ document.getElementById('testForm2').addEventListener('submit', e => {
 	e.preventDefault();
 	const stock = e.target[0].value;
 	const checkbox = e.target[1].checked;
-	fetch(`/api/stock-prices/?stock=${stock}&like=${checkbox}`)
+	fetch(`/api/stock-prices/?like=${checkbox}&stock=${stock}`)
 		.then(res => res.json())
 		.then(data => {
 			document.getElementById('jsonResult').innerText = JSON.stringify(data);

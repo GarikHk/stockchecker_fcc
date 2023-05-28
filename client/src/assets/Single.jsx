@@ -7,7 +7,7 @@ export default function Single({ handleSubmit, handleChange, formData, setFormDa
                 type="text"
                 name="stock1"
                 placeholder="GOOG"
-                required=""
+                required
                 onChange={handleChange}
                 value={formData.stock1}
             />

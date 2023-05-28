@@ -53,7 +53,7 @@ video {
     grid-template-rows: 1fr;
 }
 
-.content>form {
+.content>div {
     overflow: hidden;
 }
 
@@ -107,11 +107,11 @@ main {
     font-weight: 500;
     height: 100%;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px;padding: 0.5rem;
 }
 
 .buttons button {
-    padding: 0.45rem;
+    
     background-color: #36ba01;
     color: #121212;
 }
@@ -128,7 +128,9 @@ main {
 }
 
 .like p {
-    margin: 0.45rem;
+    /* margin: 0.45rem; */
+    margin: 0;
+    padding: 0;
 }
 
 .like:hover {
