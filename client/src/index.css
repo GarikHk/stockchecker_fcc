@@ -71,6 +71,12 @@ main {
 .title {
     font-size: 1.5rem;
     padding: 1rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.title:hover {
+    color: darkgreen;
 }
 
 .formClass {
@@ -159,6 +165,7 @@ main {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 500ms, padding 500ms;
+    overflow: hidden;
 }
 
 .jsonResult>pre {
