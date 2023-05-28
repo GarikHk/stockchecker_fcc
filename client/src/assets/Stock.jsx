@@ -34,13 +34,16 @@ export default function Stock({ title, component: Component, ...props }) {
             },
         })
             .then(response => response.json())
-            .then(data => data.stockData ? setResult(data) : setResult({ error: "Invalid input" }))
+            .then(data => {
+                // console.log(data)
+                setResult(data)
+            })
             .catch(error => console.error(error))
     }
 
     function Result() {
-        if (!result || !result.stockData) {
-            return <h1>{result && result.error}</h1>;
+        if (!result || typeof result.stockData === "string") {
+            return <h4>{result?.stockData}</h4>;
         }
 
         const { stockData } = result;

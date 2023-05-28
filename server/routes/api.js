@@ -6,14 +6,17 @@ const bcrypt = require('bcrypt');
 // Function for getting the price of the stock
 const getPrice = async (symbol, ip, liked) => {
     let url = `https://stock-price-checker-proxy.freecodecamp.rocks/v1/stock/${symbol}/quote`;
-    let price, likes;
+    let retrunedObj, likes;
 
     // Get the price of the stock
     await fetch(url)
         .then(res => res.json())
-        .then(item => {
-            price = item.latestPrice;
+        .then(data => {
+            retrunedObj = data
         });
+
+    if (typeof retrunedObj !== 'object') return retrunedObj
+    const price = retrunedObj.latestPrice
 
     // Get the like count for the stock
     let stock = await Stocks.findOne({ name: symbol });
@@ -68,6 +71,10 @@ module.exports = function (app) {
                 let temp = [];
                 for (let i = 0; i < 2; i++) {
                     const query = await getPrice(stock[i].toUpperCase(), ip, like);
+
+                    if (typeof query === "string") return res.status(200).json({
+                        stockData: `${query} in ${i === 0 ? "1st" : "2nd"} input`,
+                    });
 
                     temp.push(query.likes);
                     data.push({

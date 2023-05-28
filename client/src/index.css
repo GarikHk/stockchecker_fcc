@@ -158,7 +158,7 @@ main {
     padding: 0;
     display: grid;
     grid-template-rows: 0fr;
-    /* transition: grid-template-rows 500ms, padding 500ms; */
+    transition: grid-template-rows 500ms, padding 500ms;
 }
 
 .jsonResult>pre {
