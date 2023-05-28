@@ -23,7 +23,7 @@ video {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background-color:  #F5F7FB;
+    background-color: #F5F7FB;
 }
 
 /* Handle */
@@ -107,11 +107,12 @@ main {
     font-weight: 500;
     height: 100%;
     border: none;
-    border-radius: 5px;padding: 0.5rem;
+    border-radius: 5px;
+    padding: 0.5rem;
 }
 
 .buttons button {
-    
+
     background-color: #36ba01;
     color: #121212;
 }
@@ -135,4 +136,43 @@ main {
 
 .like:hover {
     background-color: #81C0F4;
+}
+
+.jsonToggler {
+    background: none;
+    color: #36ba01;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+}
+
+.jsonResult {
+    color: aliceblue;
+    background: #3e3e42;
+    border-radius: 5px;
+    font-size: 1.125rem;
+    white-space: pre-line;
+    text-align: left;
+    padding: 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms, padding 500ms;
+}
+
+.jsonResult>pre {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.jsonResult.expand {
+    background: #3e3e42;
+    padding: 1rem;
+    grid-template-rows: 1fr;
+}
+
+@media screen and (max-width: 768px) {
+    .jsonResult {
+        font-size: 1rem;
+    }
 }

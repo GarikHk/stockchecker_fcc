@@ -34,23 +34,30 @@ export default function Stock({ title, component: Component, ...props }) {
             },
         })
             .then(response => response.json())
-            // .then(data => console.log(data))
-            .then(data => data.stockData && data.stockData.price ? setResult(data) : setResult({ error: "Invalid input" }))
+            .then(data => data.stockData ? setResult(data) : setResult({ error: "Invalid input" }))
             .catch(error => console.error(error))
     }
 
     function Result() {
-        if (!result.stockData) {
-            return <h1>{result.error}</h1>
+        if (!result || !result.stockData) {
+            return <h1>{result && result.error}</h1>;
         }
 
-        const { stockData } = result
-        const text = !Array.isArray(stockData)
-            ? <h4>The Current value of <span>{stockData.stock}</span> is <span>${stockData.price}</span></h4>
-            : <h4>The Current value of <span>{stockData[0].stock}</span> is <span>${stockData[0].price}</span>
-                and The Current value of <span>{stockData[1].stock}</span> is <span>${stockData[1].price}</span>
-                with like difference of <span>{stockData[0].rel_likes}</span>
+        const { stockData } = result;
+        const text = !Array.isArray(stockData) ? (
+            <h4>
+                The current value of <span>{stockData.stock}</span> is{" "}
+                <span>${stockData.price}</span> and has been liked{" "}
+                <span>{stockData.likes}</span> times on this site...
             </h4>
+        ) : (
+            <h4>
+                The current value of <span>{stockData[0].stock}</span> is{" "}
+                <span>${stockData[0].price}</span> and the current value of{" "}
+                <span>{stockData[1].stock}</span> is <span>${stockData[1].price}</span>{" "}
+                with a like difference of <span>{stockData[0].rel_likes}</span>...
+            </h4>
+        );
 
         return (
             <div>
@@ -63,12 +70,11 @@ export default function Stock({ title, component: Component, ...props }) {
                     {json ? "Hide JSON" : "See JSON"}
                 </button>
 
-                < div className={!json ? "jsonResult" : "jsonResult expand"}>
-                    <code>{JSON.stringify(stockData, null, 2)}</code>
+                <div className={!json ? "jsonResult" : "jsonResult expand"}>
+                    <pre>{JSON.stringify(stockData, null, 2)}</pre>
                 </div>
-
             </div>
-        )
+        );
     }
 
     return (
