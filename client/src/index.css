@@ -138,6 +138,10 @@ main {
     background-color: #81C0F4;
 }
 
+.result span {
+    color: aliceblue;
+}
+
 .jsonToggler {
     background: none;
     color: #36ba01;
@@ -156,7 +160,7 @@ main {
     padding: 0;
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 500ms, padding 500ms;
+    /* transition: grid-template-rows 500ms, padding 500ms; */
 }
 
 .jsonResult>pre {

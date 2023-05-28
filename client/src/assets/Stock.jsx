@@ -48,7 +48,7 @@ export default function Stock({ title, component: Component, ...props }) {
             <h4>
                 The current value of <span>{stockData.stock}</span> is{" "}
                 <span>${stockData.price}</span> and has been liked{" "}
-                <span>{stockData.likes}</span> times on this site...
+                <span>{stockData.likes}</span> time(s) on this website...
             </h4>
         ) : (
             <h4>
@@ -60,7 +60,7 @@ export default function Stock({ title, component: Component, ...props }) {
         );
 
         return (
-            <div>
+            <div className="result">
                 {text}
 
                 <button

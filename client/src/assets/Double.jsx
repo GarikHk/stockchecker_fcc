@@ -7,7 +7,7 @@ export default function Double({ handleSubmit, handleChange, formData, setFormDa
                 type="text"
                 name="stock1"
                 placeholder="GOOG"
-                required=""
+                required
                 onChange={handleChange}
                 value={formData.stock1}
             />
@@ -15,7 +15,7 @@ export default function Double({ handleSubmit, handleChange, formData, setFormDa
                 type="text"
                 name="stock2"
                 placeholder="MSFT"
-                required=""
+                required
                 onChange={handleChange}
                 value={formData.stock2}
             />
