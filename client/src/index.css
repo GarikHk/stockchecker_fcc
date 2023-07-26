@@ -1,13 +1,16 @@
 body {
     margin: 0;
     padding: 0;
-    padding-bottom: 2rem;
     font-family: system-ui;
     font-size: 1.125rem;
     line-height: 1.5;
     background-color: #3e3e42;
     color: #36ba01;
     overflow-y: overlay;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
 }
 
 img,
@@ -35,6 +38,10 @@ video {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #121212;
+}
+
+#root {
+    width: 70%;
 }
 
 .wrapper {
